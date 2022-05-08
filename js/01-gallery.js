@@ -33,8 +33,21 @@ function onOpenMaxImgModal(event) {
   if (event.target.nodeName !== "IMG") {
     return;
   }
-  const instance = basicLightbox.create(`
-    <img src="${event.target.dataset.source}">
-`);
+  const originalImage = event.target.dataset.source;
+  const instance = basicLightbox.create(`<img src="${originalImage}">`, {
+    onShow: () => {
+      window.addEventListener("keydown", onEscKeyPress);
+    },
+
+    onClose: () => {
+      window.removeEventListener("keydown", onEscKeyPress);
+    },
+  });
   instance.show();
+  function onEscKeyPress(event) {
+    if (event.code === "Escape") {
+      console.log("ESC");
+      instance.close();
+    }
+  }
 }

@@ -26,18 +26,15 @@ function onOpenMaxImgModal(event) {
   if (event.target.nodeName !== "IMG") {
     return;
   }
-  const lightbox = new SimpleLightbox(".gallery a", {
+  let lightbox = new SimpleLightbox(".gallery a", {
     captionDelay: 250,
     showCounter: false,
     alertError: false,
     captionsData: "alt",
   });
-  //   const lightbox = basicLightbox.create(`
-  //     <img src="${event.target.dataset.source}">
-  // `);
-  //   instance.show();
-  //   lightbox.option({
-  //     animationSpeed: 250,
-  //     animationSlide: true,
-  //   });
 }
+
+// let gallery = new SimpleLightbox(".gallery a");
+// gallery.on("show.simplelightbox", function () {
+//   // Do something…
+// });
